@@ -46,7 +46,7 @@ def camera_capture():
 	caps = []
 	for i in cameras:
 		try:
-			cap = cv2.VideoCapture(int(i))	
+			cap = cv2.VideoCapture(i)	
 		except Exception:
 			cap = cv2.VideoCapture(i)
 		cap.set(38, 2)

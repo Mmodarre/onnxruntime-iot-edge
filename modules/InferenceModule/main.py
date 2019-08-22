@@ -58,16 +58,16 @@ TIME_ZONE = timezone('US/Pacific')
 
 # This is a boolean marking whether to use cloud storage or not.
 # Change to true and follow tutorial instructions if you would like to use it.
-CLOUD_STORAGE = True
+CLOUD_STORAGE = False
 print("CLOUD STORAGE STATUS:", CLOUD_STORAGE)
 
-CONTAINER_NAME = 'localcontainer'
+CONTAINER_NAME = 'jetsononnx'
 ts = datetime.now(TIME_ZONE)
 timestring = ts.strftime("%Y-%m-%d %H:%M:%S")
 current_date = timestring.split()[0]
 DAILY_STRING = "timestamp,location," + labels_string + "\n"
 if (CLOUD_STORAGE):
-	block_blob_service = BlockBlobService(connection_string='DefaultEndpointsProtocol=http;BlobEndpoint=http://azureblobstorageoniotedge:11002/<local storage container name>;AccountName=<local storage container name>;AccountKey=<local storage container key>')
+	block_blob_service = BlockBlobService(connection_string='DefaultEndpointsProtocol=http;BlobEndpoint=http://azureblobstorageoniotedge:11002/jetsononnx;AccountName=jetsononnx;AccountKey=1Irm6Jji5rvEZVtssWN60+Te45dCMn3G5ljpnGvEXWoAMyQ65lzP83YaTPF24vOpazJqJO3gD11NqFivG2Gozw==')
 	ts = datetime.now(TIME_ZONE)
 	DAILY_CSV_NAME = 'objectcount' + current_date + '.csv'
 	block_blob_service.create_container(CONTAINER_NAME)
@@ -198,6 +198,8 @@ def get_tinyyolo_frame_from_encode(msg):
 	"""
 	inp = np.array(msg).reshape((len(msg),1))
 	frame = cv2.imdecode(inp.astype(np.uint8), 1)
+	cv2.imwrite('/home/storagedata/image.png',frame)
+	print('/home/storagedata/image.png')
 	frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 	frame = np.array(frame).astype(np.float32)
 	frame = cv2.resize(frame, (416, 416))

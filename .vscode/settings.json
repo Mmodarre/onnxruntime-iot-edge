@@ -5,4 +5,5 @@
     },
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
+    "docker.defaultRegistryPath": "mehdi.azurecr.io",
 }

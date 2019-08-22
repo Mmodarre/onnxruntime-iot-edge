@@ -126,35 +126,9 @@
                   "PortBindings": {},
                   "Binds": [
                   ],
-                  "NetworkMode": "Host",
-                  "Devices": [
-                    {
-                      "PathOnHost": "/dev/video0",
-                      "PathInContainer": "/dev/video0",
-                      "CgroupPermissions": "rwm"
-                    }
-                  ]
+                  "NetworkMode": "Host"
+                  
                 }
-              }
-            }
-          },
-          "azureblobstorageoniotedge": {
-            "version": "1.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "mcr.microsoft.com/azure-blob-storage:latest",
-              "createOptions": {
-                  "Env": [
-                    "LOCAL_STORAGE_ACCOUNT_NAME=<your local storage container name>",
-                    "LOCAL_STORAGE_ACCOUNT_KEY=<insert your generated local storage account key here>"
-                  ],
-                  "HostConfig": {
-                    "NetworkMode": "Host",
-                    "Binds": [],
-                    "PortBindings": {}
-                  }
               }
             }
           }
@@ -170,26 +144,6 @@
         },
         "storeAndForwardConfiguration": {
           "timeToLiveSecs": 7200
-        }
-      }
-    },
-    "azureblobstorageoniotedge": {
-      "properties.desired": {
-        "deviceAutoDeleteProperties": {
-          "deleteOn": "false",
-          "deleteAfterMinutes": "10",
-          "retainWhileUploading": "true"
-        },
-        "deviceToCloudUploadProperties": {
-          "uploadOn": "true",
-          "uploadOrder": "OldestFirst",
-          "cloudStorageConnectionString": "<insert cloud storage connection string here>",
-          "storageContainersForUpload": {
-            "localcontainer": {
-              "target": "storagetest"
-            }
-          },
-          "deleteAfterUpload": "true"
         }
       }
     }
