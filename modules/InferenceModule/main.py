@@ -54,7 +54,7 @@ LATEST_CSV_NAME = 'objectcountlatest.csv'
 DAILY_CSV_NAME = ''
 
 # Set TimeZone (Change from pacific if you live in another timezone)
-TIME_ZONE = timezone('US/Pacific')
+TIME_ZONE = timezone('Australia/Melbourne')
 
 # This is a boolean marking whether to use cloud storage or not.
 # Change to true and follow tutorial instructions if you would like to use it.

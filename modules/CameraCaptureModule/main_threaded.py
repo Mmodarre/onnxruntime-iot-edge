@@ -24,7 +24,7 @@ url = 'http://inferencemodule:5000'
 #	Dockerfile.arm64 in InferenceModule
 
 # Set timezone for timestamping (Change if you are not in Pacific timezone)
-TIME_ZONE = timezone('US/Pacific')
+TIME_ZONE = timezone('Australia/Melbourne')
 
 
 # Camera class wraps around VideoCApture and allows us to thread cameras for parallel processing
