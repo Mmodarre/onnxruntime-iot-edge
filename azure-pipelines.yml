@@ -24,6 +24,6 @@ stages:
       displayName: Build an image
       inputs:
         command: build
-        dockerfile: '**/modules/CameraCaptureModule/Dockerfile'
+        dockerfile: '**/modules/CameraCaptureModule/Dockerfile.arm64'
         tags: |
           $(tag)
